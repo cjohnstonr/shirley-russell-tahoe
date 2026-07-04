@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/*
+  Shirley Russell — Lake Tahoe
+  Design system: one anchor accent (her brand teal #006363), warm editorial
+  neutrals dominate. Serif display (Cormorant Garamond) + Inter for UI/body.
+*/
+
+@theme {
+  /* Text + darks (teal-tinted charcoals, never pure black) */
+  --color-ink: #101f1c;
+  --color-charcoal: #24332f;
+  --color-slate: #4f605b;
+  --color-mist: #9fb4ae;
+
+  /* Brand accent family — #006363 is Shirley's existing brand equity */
+  --color-teal: #006363;
+  --color-teal-deep: #014b4b;
+  --color-pine: #023434;
+  --color-abyss: #041d1d;
+  --color-seafoam: #a9cfc7;
+
+  /* Warm neutrals */
+  --color-ivory: #f5f2ea;
+  --color-alabaster: #faf8f2;
+  --color-sand: #ebe4d6;
+  --color-linen: #ddd5c4;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", Inter, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-ivory font-sans text-charcoal antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    letter-spacing: 0.004em;
+  }
+  ::selection {
+    background: #006363;
+    color: #f5f2ea;
+  }
+  :focus-visible {
+    outline: 2px solid #006363;
+    outline-offset: 3px;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  img {
+    @apply select-none;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans text-[11px] font-semibold tracking-[0.3em] uppercase;
+  }
+  .microtype {
+    @apply font-sans text-[11px] font-medium tracking-[0.18em] uppercase;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-[2px] px-8 py-[1.05rem] font-sans text-[11.5px] font-semibold tracking-[0.24em] uppercase transition-all duration-300 select-none;
+  }
+  .btn-solid {
+    @apply bg-teal text-ivory;
+  }
+  .btn-solid:hover {
+    @apply bg-teal-deep;
+  }
+  .btn-ghost-light {
+    @apply border border-ivory/45 text-ivory;
+  }
+  .btn-ghost-light:hover {
+    @apply border-ivory bg-ivory/10;
+  }
+  .btn-ghost-dark {
+    @apply border border-ink/30 text-ink;
+  }
+  .btn-ghost-dark:hover {
+    @apply border-ink bg-ink/5;
+  }
+
+  /* Refined borderless input — focus indicated by an inset teal underline (no layout shift) */
+  .input-line {
+    @apply w-full border-0 border-b border-linen bg-transparent px-0 py-3 font-sans text-base text-ink transition-[box-shadow,border-color] duration-300 outline-none;
+  }
+  .input-line::placeholder {
+    @apply text-slate/45;
+  }
+  .input-line:focus-visible {
+    outline: none;
+    border-color: transparent;
+    box-shadow: inset 0 -2px 0 0 #006363;
+  }
+}
+
+/* Cinematic film grain — fixed, non-interactive, whisper-quiet */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
