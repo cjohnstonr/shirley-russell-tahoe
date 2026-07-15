@@ -1,16 +1,22 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
-import heroPonderosa from '../assets/img/hero_ponderosa.jpg'
+import heroSltEdgewood from '../assets/img/hero_slt_edgewood.jpg'
 import { EASE, fadeUp, stagger } from '../lib/motion'
 import Eyebrow from './Eyebrow'
 import { site } from '../data/site'
 
 /*
-  Hero image: 100 Ponderosa Drive, Zephyr Cove — her own $3.4M SOLD lakefront
-  listing. Chosen over the crisper Voight Canyon aerial because it is the
-  thesis in one frame: Lake Tahoe + Sierra peaks + the home. The 1280px source
-  is protected by object-position (58% 42% keeps lake/home, crops the MLS
-  watermark and the neighboring construction at the frame edges), the heavy
-  left scrim, the bottom vignette, and the site-wide film grain.
+  Hero image (Round 3 client swap, her own pick from two she emailed): a
+  South Lake Tahoe aerial over the Edgewood/golf-course corridor to the lake.
+  Her other candidate, a 17840x3568 stitched panorama, is unusable in this
+  full-bleed slot without cropping away >80% of its width - not a taste call,
+  a hard aspect-ratio constraint - so it was not used here (still in
+  assets/round3/ for a future non-hero placement if she wants one).
+  object-position 72% 40% keeps the lake + Sierra skyline (upper-right of the
+  frame) in the uncovered zone; the left scrim already handles the
+  buildings/golf-course clutter on that side. 1200px source is the lowest-res
+  hero this repo has shipped (prior: 1280px, 1600px) - same "treat carefully"
+  handling as Round 2's Ponderosa pick: no additional upscale beyond what
+  object-cover already applies, rely on the scrim + film grain to mask it.
 */
 export default function Hero() {
   const prefersReduced = useReducedMotion()
@@ -23,12 +29,12 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-svh items-end overflow-hidden bg-abyss">
       {/* Cinematic image: slow settle on load + scroll parallax (114% height = drift headroom) */}
       <motion.img
-        src={heroPonderosa}
-        alt="Lakefront home above Lake Tahoe at 100 Ponderosa Drive, Zephyr Cove"
+        src={heroSltEdgewood}
+        alt="Aerial view of South Lake Tahoe, the lake and Sierra Nevada peaks beyond the golf course and shoreline"
         loading="eager"
         decoding="async"
         className="absolute inset-x-0 top-[-7%] h-[114%] w-full object-cover"
-        style={{ objectPosition: '58% 42%', y: prefersReduced ? 0 : parallaxY }}
+        style={{ objectPosition: '72% 40%', y: prefersReduced ? 0 : parallaxY }}
         initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
         transition={{ duration: 3.2, ease: EASE }}
@@ -80,14 +86,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Proof caption — the hero is not a stock photo, it is her sale */}
+      {/* Location caption — this is a general area aerial, not a specific listing,
+          so no price/address claim belongs here (real-content-only rule) */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1.2 }}
         className="microtype absolute right-24 bottom-9 z-10 hidden text-ivory/55 md:block"
       >
-        100 Ponderosa Drive, Zephyr Cove · Sold at $3,400,000
+        South Lake Tahoe, California
       </motion.p>
 
       {/* Scroll cue */}
