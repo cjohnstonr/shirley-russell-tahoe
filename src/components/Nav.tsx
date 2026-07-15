@@ -30,11 +30,15 @@ export default function Nav() {
     }
   }, [open])
 
-  /* Light (ivory) text whenever the header sits over a dark surface: either the
-     transparent header over the hero image (not scrolled), or the pine mobile
-     menu overlay (open) — those are independent conditions, not both-required.
-     Previously `!scrolled && !open` forced dark ink text the moment the menu
-     opened, rendering the wordmark against bg-pine and making it unreadable. */
+  /* `light` = ivory text/icons, required whenever a dark surface sits behind
+     the header: the hero image (not scrolled) OR the pine mobile-menu overlay
+     (open) — independent conditions, OR them, never AND. The header's own
+     background block below only branches on `scrolled`; it stays transparent
+     while `open` so the pine overlay shows through it by design. So any new
+     element colored off `light` must still get `open` folded in via this
+     flag — reading `!scrolled` alone will go dark-on-dark against the open
+     menu. Mirrors the hamburger icon's own open-state branch a few lines
+     down; keep that ternary and this flag in sync if either changes. */
   const light = !scrolled || open
 
   return (
