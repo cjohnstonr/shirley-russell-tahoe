@@ -24,6 +24,6 @@ npm run preview   # serves dist/ at http://localhost:4173
 
 ## Structure
 
-- `src/data/` — site facts, verbatim reviews, real listings (single source of truth)
-- `src/components/` — Nav, Hero, StatBar, Story, Owners, Reviews, Properties, Contact, Footer
+- `src/data/` — site facts, verbatim reviews, real listings, RealScout area searches (`searches.ts`), Q&A (`faqs.ts`) — single source of truth
+- `src/components/` — Nav, Hero, StatBar, Story, Owners, Reviews, Properties, Explore, Questions, Contact, Footer
 - V2 insertion points (ManagementPartner, InsightsJournal) are marked as comments in `src/App.tsx` — architected, intentionally not rendered.

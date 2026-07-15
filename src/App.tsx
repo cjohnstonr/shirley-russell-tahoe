@@ -6,6 +6,8 @@ import Story from './components/Story'
 import Owners from './components/Owners'
 import Reviews from './components/Reviews'
 import Properties from './components/Properties'
+import Explore from './components/Explore'
+import Questions from './components/Questions'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -29,14 +31,17 @@ export default function App() {
 
         <Reviews />
         <Properties />
+        <Explore />
 
         {/*
           ── V2 INSERTION POINT · <InsightsJournal /> ────────────────────────
           Blog / Insights / Resources (SEO + AI-discoverability play) slots in
           HERE, between the property record and the consultation close. Do NOT
-          render in V1.
+          render in V1. (Round 3 added <Explore /> above and the <Questions />
+          Q&A below; this future blog/journal feed is still intentionally unbuilt.)
         */}
 
+        <Questions />
         <Contact />
       </main>
       <Footer />

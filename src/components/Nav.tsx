@@ -7,6 +7,8 @@ const LINKS = [
   { label: 'For Owners', href: '#owners' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Properties', href: '#properties' },
+  { label: 'Explore', href: '#explore' },
+  { label: 'Q&A', href: '#questions' },
 ]
 
 export default function Nav() {
@@ -55,7 +57,7 @@ export default function Nav() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-9" aria-label="Primary">
             {LINKS.map((l) => (
               <a
                 key={l.href}

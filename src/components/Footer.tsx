@@ -5,6 +5,8 @@ const NAV = [
   { label: 'For Owners', href: '#owners' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Properties', href: '#properties' },
+  { label: 'Explore', href: '#explore' },
+  { label: 'Q&A', href: '#questions' },
   { label: 'Contact', href: '#contact' },
 ]
 
