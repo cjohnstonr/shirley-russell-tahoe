@@ -5,18 +5,23 @@ import Eyebrow from './Eyebrow'
 import { site } from '../data/site'
 
 /*
-  Hero image (Round 3 client swap, her own pick from two she emailed): a
-  South Lake Tahoe aerial over the Edgewood/golf-course corridor to the lake.
-  Her other candidate, a 17840x3568 stitched panorama, is unusable in this
-  full-bleed slot without cropping away >80% of its width - not a taste call,
-  a hard aspect-ratio constraint - so it was not used here (still in
-  assets/round3/ for a future non-hero placement if she wants one).
-  object-position 72% 40% keeps the lake + Sierra skyline (upper-right of the
-  frame) in the uncovered zone; the left scrim already handles the
-  buildings/golf-course clutter on that side. 1200px source is the lowest-res
-  hero this repo has shipped (prior: 1280px, 1600px) - same "treat carefully"
-  handling as Round 2's Ponderosa pick: no additional upscale beyond what
-  object-cover already applies, rely on the scrim + film grain to mask it.
+  Hero source is a real, unaltered aerial of South Lake Tahoe - real-content-
+  only rule, same as every other asset in this repo. A second image sits at
+  assets/round3/Lake Tahoe.jpeg; do not swap it in here without solving its
+  aspect ratio first - it's a 17840x3568 stitched panorama (5:1), and cropping
+  it to fill this full-bleed slot discards most of its width. Non-hero
+  placement is the likely fit if it's ever used.
+
+  object-position 72% 40% is load-bearing, not decorative: it keeps the lake
+  + Sierra skyline in the frame's uncovered right side and pushes the
+  golf-course/building clutter left, under the scrim. Moving this value
+  without re-checking what lands under the scrim will likely uncover the
+  clutter or bury the lake.
+
+  Source is 1200px wide, the lowest-res hero shipped in this repo (prior:
+  1280px, 1600px). Do not upscale beyond what object-cover already does -
+  the scrim + site-wide film grain are already doing the masking work; there
+  is no headroom above that without it reading soft.
 */
 export default function Hero() {
   const prefersReduced = useReducedMotion()
